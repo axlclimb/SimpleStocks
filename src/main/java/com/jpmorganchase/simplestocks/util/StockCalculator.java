@@ -16,4 +16,14 @@ public class StockCalculator {
         }
         return dividendYield;
     }
+
+    public double calculateDividendYield(String stockType, double lastDividend, double fixedDividend, double parValue, double stockSymbolPrice) {
+        double dividendYield;
+        if (StockType.COMMON.equals(stockType.toUpperCase())) {
+            dividendYield = lastDividend / stockSymbolPrice;
+        } else {
+            dividendYield = (fixedDividend * parValue) / stockSymbolPrice;
+        }
+        return dividendYield;
+    }
 }

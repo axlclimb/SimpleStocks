@@ -10,4 +10,6 @@ import org.springframework.stereotype.Component;
 public interface SuperSimpleStocksService {
 
     Stock calculateStock(Stock stock);
+
+    Stock calculateStock(String stockSymbol, String stockType, double lastDividend, double fixedDividend, double parValue, double stockSymbolPrice);
 }

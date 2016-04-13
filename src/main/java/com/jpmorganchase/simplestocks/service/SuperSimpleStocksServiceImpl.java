@@ -18,4 +18,9 @@ public class SuperSimpleStocksServiceImpl implements SuperSimpleStocksService {
     public Stock calculateStock(Stock stock) {
         return calculateStockHandler.calculateStock(stock);
     }
+
+    @Override
+    public Stock calculateStock(String stockSymbol, String stockType, double lastDividend, double fixedDividend, double parValue, double stockSymbolPrice) {
+        return calculateStockHandler.calculateStock(stockSymbol, stockType, lastDividend, fixedDividend, parValue, stockSymbolPrice);
+    }
 }
