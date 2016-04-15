@@ -3,7 +3,6 @@ package com.jpmorganchase.simplestocks.util;
 import com.jpmorganchase.simplestocks.model.Stock;
 import com.jpmorganchase.simplestocks.model.Trade;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,16 +13,17 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Alex Dumitrescu
  */
 @Component
+@Scope(BeanDefinition.SCOPE_SINGLETON)
 public class DataSource {
 
-    private Map<Long, Trade> tradeMap = new ConcurrentHashMap<>();
-    private Map<StockType, Stock> stockMap = new ConcurrentHashMap<>();
+    private Map<Long, Trade> tradeMap;
+    private Map<StockSymbol, Stock> stockMap;
 
     private DataSource() {
-        new DataSource(this.tradeMap, stockMap);
+        this(new ConcurrentHashMap<>(), new ConcurrentHashMap<>());
     }
 
-    private DataSource(Map<Long, Trade> tradeMap, Map<StockType, Stock> stockMap) {
+    private DataSource(Map<Long, Trade> tradeMap, Map<StockSymbol, Stock> stockMap) {
         this.tradeMap = tradeMap;
         this.stockMap = stockMap;
     }
@@ -32,14 +32,8 @@ public class DataSource {
         return tradeMap;
     }
 
-    public Map<StockType, Stock> getStockMap() {
+    public Map<StockSymbol, Stock> getStockMap() {
         return stockMap;
     }
 
-    @Bean
-    @Scope(BeanDefinition.SCOPE_SINGLETON)
-    public DataSource getDataSource() {
-        return new DataSource();
-
-    }
 }

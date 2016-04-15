@@ -21,7 +21,6 @@ public class TradeHandler {
 
     public String recordTrade(Trade trade) {
         dataSource.getTradeMap().put(Instant.now().toEpochMilli(), trade);
-//        hashMap.put(LocalTime.now(), trade);
         return "SUCCESS";
     }
 

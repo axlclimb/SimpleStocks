@@ -1,12 +1,13 @@
 package com.jpmorganchase.simplestocks.model;
 
+import com.jpmorganchase.simplestocks.util.StockSymbol;
 import com.jpmorganchase.simplestocks.util.StockType;
 
 /**
  * @author Alex Dumitrescu
  */
 public class Stock {
-    private final String stockSymbol;
+    private final StockSymbol stockSymbol;
     private final StockType stockType;
     private final double lastDividend;
     private final double fixedDividend;
@@ -22,7 +23,7 @@ public class Stock {
         this.stockSymbolPrice = builder.stockSymbolPrice;
     }
 
-    public String getStockSymbol() {
+    public StockSymbol getStockSymbol() {
         return stockSymbol;
     }
 
@@ -47,14 +48,14 @@ public class Stock {
     }
 
     public static class StockBuilder {
-        private String stockSymbol;
+        private StockSymbol stockSymbol;
         private StockType stockType;
         private double lastDividend;
         private double fixedDividend;
         private double parValue;
         private double stockSymbolPrice;
 
-        public StockBuilder stockSymbol(String stockSymbol) {
+        public StockBuilder stockSymbol(StockSymbol stockSymbol) {
             this.stockSymbol = stockSymbol;
             return this;
         }

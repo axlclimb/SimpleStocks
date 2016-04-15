@@ -27,7 +27,7 @@ public class SimpleStockController {
     @RequestMapping(value = "/calculateDividendYield", method = RequestMethod.GET)
     @ResponseBody
     public double calculateStockObject(
-            @RequestParam String stockSymbol,
+            @RequestParam StockSymbol stockSymbol,
             @RequestParam StockType stockType,
             @RequestParam double lastDividend,
             @RequestParam double fixedDividend,
@@ -49,7 +49,7 @@ public class SimpleStockController {
     @RequestMapping(value = "/calculatePriceEarningsRatio", method = RequestMethod.GET)
     @ResponseBody
     public double calculateStock(
-            @RequestParam String stockSymbol,
+            @RequestParam StockSymbol stockSymbol,
             @RequestParam String stockType,
             @RequestParam double lastDividend,
             @RequestParam double fixedDividend,
