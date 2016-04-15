@@ -19,9 +19,9 @@ public class SimpleStockController {
     @Autowired
     private SuperSimpleStocksService superSimpleStocksService;
 
-    @RequestMapping(value = "/calculateStockObject", method = RequestMethod.GET)
+    @RequestMapping(value = "/calculateDividendYield", method = RequestMethod.GET)
     @ResponseBody
-    public Stock calculateStockObject(
+    public double calculateStockObject(
             @RequestParam String stockSymbol,
             @RequestParam String stockType,
             @RequestParam double lastDividend,
@@ -29,7 +29,7 @@ public class SimpleStockController {
             @RequestParam double parValue,
             @RequestParam double stockSymbolPrice) {
 
-        return superSimpleStocksService.calculateStock(
+        return superSimpleStocksService.calculateDividendYield(
                 new Stock.StockBuilder()
                         .stockSymbol(stockSymbol)
                         .stockType(Enum.valueOf(StockType.class, stockType))
@@ -41,9 +41,9 @@ public class SimpleStockController {
 
     }
 
-    @RequestMapping(value = "/calculateStock", method = RequestMethod.GET)
+    @RequestMapping(value = "/calculatePriceEarningsRatio", method = RequestMethod.GET)
     @ResponseBody
-    public Stock calculateStock(
+    public double calculateStock(
             @RequestParam String stockSymbol,
             @RequestParam String stockType,
             @RequestParam double lastDividend,
@@ -51,6 +51,13 @@ public class SimpleStockController {
             @RequestParam double parValue,
             @RequestParam double stockSymbolPrice) {
 
-        return superSimpleStocksService.calculateStock(stockSymbol, stockType, lastDividend, fixedDividend, parValue, stockSymbolPrice);
+        return superSimpleStocksService.calculatePriceEarningsRatio(new Stock.StockBuilder()
+                .stockSymbol(stockSymbol)
+                .stockType(Enum.valueOf(StockType.class, stockType))
+                .lastDividend(lastDividend)
+                .fixedDividend(fixedDividend)
+                .parValue(parValue)
+                .stockSymbolPrice(stockSymbolPrice)
+                .build());
     }
 }

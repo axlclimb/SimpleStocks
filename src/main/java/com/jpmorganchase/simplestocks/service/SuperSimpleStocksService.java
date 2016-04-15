@@ -1,6 +1,7 @@
 package com.jpmorganchase.simplestocks.service;
 
 import com.jpmorganchase.simplestocks.model.Stock;
+import com.jpmorganchase.simplestocks.model.Trade;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public interface SuperSimpleStocksService {
 
-    Stock calculateStock(Stock stock);
+    double calculateDividendYield(Stock stock);
 
-    Stock calculateStock(String stockSymbol, String stockType, double lastDividend, double fixedDividend, double parValue, double stockSymbolPrice);
+    double calculatePriceEarningsRatio(Stock stock);
+
+    double recordTrade(Trade trade);
 }

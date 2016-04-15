@@ -15,12 +15,13 @@ public class SuperSimpleStocksServiceImpl implements SuperSimpleStocksService {
     private CalculateStockHandler calculateStockHandler;
 
     @Override
-    public Stock calculateStock(Stock stock) {
+    public double calculateDividendYield(Stock stock) {
         return calculateStockHandler.calculateStock(stock);
     }
 
     @Override
-    public Stock calculateStock(String stockSymbol, String stockType, double lastDividend, double fixedDividend, double parValue, double stockSymbolPrice) {
-        return calculateStockHandler.calculateStock(stockSymbol, stockType, lastDividend, fixedDividend, parValue, stockSymbolPrice);
+    public double calculatePriceEarningsRatio(Stock stock) {
+        return calculateStockHandler.calculatePriceEarningsRatio(stock);
     }
+
 }
