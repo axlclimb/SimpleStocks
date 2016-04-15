@@ -1,18 +1,26 @@
 package com.jpmorganchase.simplestocks.service;
 
 import com.jpmorganchase.simplestocks.model.Stock;
+import com.jpmorganchase.simplestocks.model.Trade;
 import com.jpmorganchase.simplestocks.service.handlers.CalculateStockHandler;
+import com.jpmorganchase.simplestocks.service.handlers.TradeHandler;
+import com.jpmorganchase.simplestocks.util.StockSymbol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
 @Component
 public class SuperSimpleStocksServiceImpl implements SuperSimpleStocksService {
 
     @Autowired
     private CalculateStockHandler calculateStockHandler;
+
+    @Autowired
+    private TradeHandler tradeHandler;
 
     @Override
     public double calculateDividendYield(Stock stock) {
@@ -24,4 +32,13 @@ public class SuperSimpleStocksServiceImpl implements SuperSimpleStocksService {
         return calculateStockHandler.calculatePriceEarningsRatio(stock);
     }
 
+    @Override
+    public String recordTrade(Trade trade) {
+        return tradeHandler.recordTrade(trade);
+    }
+
+    @Override
+    public List<Stock> calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMinutes) {
+        return tradeHandler.calculateStockPrice(stockSymbol, startingLimitInMinutes);
+    }
 }

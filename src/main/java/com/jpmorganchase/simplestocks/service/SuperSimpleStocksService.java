@@ -2,10 +2,13 @@ package com.jpmorganchase.simplestocks.service;
 
 import com.jpmorganchase.simplestocks.model.Stock;
 import com.jpmorganchase.simplestocks.model.Trade;
+import com.jpmorganchase.simplestocks.util.StockSymbol;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
 @Component
 public interface SuperSimpleStocksService {
@@ -14,5 +17,7 @@ public interface SuperSimpleStocksService {
 
     double calculatePriceEarningsRatio(Stock stock);
 
-    double recordTrade(Trade trade);
+    String recordTrade(Trade trade);
+
+    List<Stock> calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMinutes);
 }

@@ -1,7 +1,7 @@
 package com.jpmorganchase.simplestocks.util;
 
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
 public enum StockType {
     COMMON,

@@ -3,7 +3,7 @@ package com.jpmorganchase.simplestocks.model;
 import com.jpmorganchase.simplestocks.util.StockType;
 
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
 public class Stock {
     private final String stockSymbol;

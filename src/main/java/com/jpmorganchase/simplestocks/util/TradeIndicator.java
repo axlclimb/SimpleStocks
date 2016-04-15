@@ -1,7 +1,7 @@
 package com.jpmorganchase.simplestocks.util;
 
 /**
- * Created by axl on 14/04/16.
+ * @author Alex Dumitrescu
  */
 public enum TradeIndicator {
     BUY, SELL

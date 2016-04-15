@@ -1,57 +1,76 @@
 package com.jpmorganchase.simplestocks.model;
 
-import com.jpmorganchase.simplestocks.util.StockSimbol;
+import com.jpmorganchase.simplestocks.util.StockSymbol;
 import com.jpmorganchase.simplestocks.util.TradeIndicator;
 
 import java.util.Date;
 
 /**
- * Created by axl on 14/04/16.
+ * @author Alex Dumitrescu
  */
 public class Trade {
     private Date date;
-    private StockSimbol stockSimbol;
+    private StockSymbol stockSymbol;
     private int sharesQuantity;
     private TradeIndicator tradeIndicator;
     private double price;
+
+    public Trade(TradeBuilder builder) {
+        this.stockSymbol = builder.stockSymbol;
+        this.sharesQuantity = builder.sharesQuantity;
+        this.tradeIndicator = builder.tradeIndicator;
+        this.price = builder.price;
+    }
 
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public StockSimbol getStockSimbol() {
-        return stockSimbol;
-    }
-
-    public void setStockSimbol(StockSimbol stockSimbol) {
-        this.stockSimbol = stockSimbol;
+    public StockSymbol getStockSymbol() {
+        return stockSymbol;
     }
 
     public int getSharesQuantity() {
         return sharesQuantity;
     }
 
-    public void setSharesQuantity(int sharesQuantity) {
-        this.sharesQuantity = sharesQuantity;
-    }
-
     public TradeIndicator getTradeIndicator() {
         return tradeIndicator;
-    }
-
-    public void setTradeIndicator(TradeIndicator tradeIndicator) {
-        this.tradeIndicator = tradeIndicator;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+
+    public static class TradeBuilder {
+        private StockSymbol stockSymbol;
+        private int sharesQuantity;
+        private TradeIndicator tradeIndicator;
+        private double price;
+
+        public TradeBuilder stockSymbol(StockSymbol stockSymbol) {
+            this.stockSymbol = stockSymbol;
+            return this;
+        }
+
+        public TradeBuilder sharesQuantity(int sharesQuantity) {
+            this.sharesQuantity = sharesQuantity;
+            return this;
+        }
+
+        public TradeBuilder tradeIndicator(TradeIndicator tradeIndicator) {
+            this.tradeIndicator = tradeIndicator;
+            return this;
+        }
+
+        public TradeBuilder price(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Trade build() {
+            return new Trade(this);
+        }
     }
 }

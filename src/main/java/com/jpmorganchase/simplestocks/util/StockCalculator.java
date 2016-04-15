@@ -1,10 +1,12 @@
 package com.jpmorganchase.simplestocks.util;
 
 import com.jpmorganchase.simplestocks.model.Stock;
+import org.springframework.stereotype.Component;
 
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
+@Component
 public class StockCalculator {
 
     public double calculateDividendYield(Stock stock) {

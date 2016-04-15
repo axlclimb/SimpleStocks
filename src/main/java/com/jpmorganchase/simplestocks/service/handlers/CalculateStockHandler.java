@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by axl on 11/04/16.
+ * @author Alex Dumitrescu
  */
 @Component
 public class CalculateStockHandler {
