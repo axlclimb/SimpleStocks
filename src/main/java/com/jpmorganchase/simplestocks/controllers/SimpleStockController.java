@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Alex Dumitrescu
@@ -81,5 +81,19 @@ public class SimpleStockController {
                 .tradeIndicator(tradeIndicator)
                 .price(price)
                 .build());
+    }
+
+    @RequestMapping(value = "/calculateStockPrice", method = RequestMethod.GET)
+    @ResponseBody
+    public double calculateStockPrice(
+            @RequestParam StockSymbol stockSymbol,
+            @RequestParam Integer startingLimitInMilliseconds) {
+
+        return superSimpleStocksService.calculateStockPrice(stockSymbol, startingLimitInMilliseconds);
+    }
+    @RequestMapping(value = "/calculateGBCEAllShareIndex", method = RequestMethod.GET)
+    @ResponseBody
+    public double calculateGBCEAllShareIndex() {
+        return superSimpleStocksService.calculateGBCEAllShareIndex();
     }
 }

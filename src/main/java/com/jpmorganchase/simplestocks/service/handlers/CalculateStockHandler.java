@@ -19,8 +19,7 @@ public class CalculateStockHandler {
     private DataSource dataSource;
 
     public double calculateStock(Stock stock) {
-        dataSource.getStockMap().put(stock.getStockSymbol(), stock);
-//        addStockToDataSource(stock);
+        addStockToDataSource(stock);
         return stockCalculator.calculateDividendYield(stock);
     }
 

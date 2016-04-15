@@ -5,10 +5,11 @@ import com.jpmorganchase.simplestocks.model.Trade;
 import com.jpmorganchase.simplestocks.service.handlers.CalculateStockHandler;
 import com.jpmorganchase.simplestocks.service.handlers.TradeHandler;
 import com.jpmorganchase.simplestocks.util.StockSymbol;
+import org.apache.commons.math3.stat.StatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alex Dumitrescu
@@ -38,7 +39,13 @@ public class SuperSimpleStocksServiceImpl implements SuperSimpleStocksService {
     }
 
     @Override
-    public List<Stock> calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMinutes) {
-        return tradeHandler.calculateStockPrice(stockSymbol, startingLimitInMinutes);
+    public double calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMilliseconds) {
+        return tradeHandler.calculateStockPrice(stockSymbol, startingLimitInMilliseconds);
     }
+
+    @Override
+    public double calculateGBCEAllShareIndex() {
+        return tradeHandler.calculateGBCEAllShareIndex();
+    }
+
 }

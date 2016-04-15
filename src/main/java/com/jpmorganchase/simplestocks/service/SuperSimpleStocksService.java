@@ -5,7 +5,7 @@ import com.jpmorganchase.simplestocks.model.Trade;
 import com.jpmorganchase.simplestocks.util.StockSymbol;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alex Dumitrescu
@@ -19,5 +19,7 @@ public interface SuperSimpleStocksService {
 
     String recordTrade(Trade trade);
 
-    List<Stock> calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMinutes);
+    double calculateStockPrice(StockSymbol stockSymbol, Integer startingLimitInMilliseconds);
+
+    double calculateGBCEAllShareIndex();
 }
